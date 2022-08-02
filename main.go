@@ -15,6 +15,7 @@ https://github.com/nxenon/403-bb
 */
 
 import (
+	"crypto/tls"
 	"flag"
 	"fmt"
 	"net/http"
@@ -146,10 +147,16 @@ func sendGetRequests() {
 	var transportConfig http.RoundTripper
 
 	if globalConfig.ProxyURL == "" {
-		transportConfig = &http.Transport{Proxy: nil}
+		transportConfig = &http.Transport{
+			Proxy:           nil,
+			TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+		}
 	} else {
 		proxyUrl, _ := url.Parse(globalConfig.ProxyURL)
-		transportConfig = &http.Transport{Proxy: http.ProxyURL(proxyUrl)}
+		transportConfig = &http.Transport{
+			Proxy:           http.ProxyURL(proxyUrl),
+			TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+		}
 	}
 
 	for _, headerName := range headers {
