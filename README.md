@@ -8,6 +8,17 @@ Hope to Bypass 403 Forbidden Errors :)
  - Still working on it.
  - I'll be glad if you wanna contribute
 
+ # Installation
+
+    go install github.com/nxenon/403-bb@latest
+
+# Usage
+
+    ./403-bb  -help
+    ./403-bb  -url http://example.com/admin
+    ./403-bb  -url http://example.com/admin -payload l27.0.0.1
+    ./403-bb  -url http://example.com/admin -proxy http://127.0.0.1:8080 -timeout 0
+
 # Help    
     _  _    ___ ____    ____  ____  
     | || |  / _ \___ \  |  _ \|  _ \  Version: beta
