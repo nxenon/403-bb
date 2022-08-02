@@ -1,0 +1,7 @@
+.vscode
+.idea
+main*
+!main.go
+test*
+archives
+notes.txt
